@@ -22,6 +22,7 @@ import {
   DiscordIcon,
   HeartFilledIcon,
   SearchIcon,
+  WhatsAppIcon,
 } from "@/components/icons";
 import { Logo } from "@/components/icons";
 
@@ -57,7 +58,7 @@ export const Navbar = () => {
             href="/"
           >
             <Logo />
-            <p className="font-bold text-inherit">ACME</p>
+            <p className="font-bold text-inherit">RADIF</p>
           </Link>
         </NavbarBrand>
         <div className="hidden lg:flex gap-4 justify-start ml-2">
@@ -83,6 +84,9 @@ export const Navbar = () => {
         justify="end"
       >
         <NavbarItem className="hidden sm:flex gap-2">
+          <Link isExternal href={siteConfig.links.whatsapp} title="WhatsApp">
+            <WhatsAppIcon className="text-default-500" />
+          </Link>
           <Link isExternal href={siteConfig.links.twitter} title="Twitter">
             <TwitterIcon className="text-default-500" />
           </Link>

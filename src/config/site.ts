@@ -60,7 +60,8 @@ export const siteConfig = {
     },
   ],
   links: {
-    github: "https://github.com/heroui-inc/heroui",
+    whatsapp: "https://wa.me/6285155191433",
+    github: "https://github.com/radifan9",
     twitter: "https://twitter.com/hero_ui",
     docs: "https://heroui.com",
     discord: "https://discord.gg/9b6yyZKmH4",
