@@ -177,7 +177,7 @@ export default function IndexPage() {
       {/* Work Experiences */}
       <section className="flex flex-col items-start justify-start gap-4 py-8 md:gap-12 md:py-10">
         <h2 className="text-2xl font-bold">Work Experience</h2>
-        <div className="flex w-full flex-col gap-8">
+        <div className="flex w-full flex-col gap-16">
           {WORK_EXPERIENCES.map((exp, index) => (
             <div key={index} className="flex flex-col gap-2">
               <div className="w-14">
