@@ -107,7 +107,7 @@ export default function IndexPage() {
           <img alt="Radif" className="rounded-xl" src="/profile-pic.jpg" />
         </div>
         <div className="flex flex-col items-center gap-4 md:items-start">
-          <div className="text-3xl font-bold md:text-6xl">Hi, I'm Radif 👋</div>
+          <div className="text-3xl font-bold md:text-6xl">Hi, Im Radif 👋</div>
           <p className="text-xl font-medium text-gray-600">
             Fullstack Developer & AI/ML Enthusiast
           </p>
@@ -242,9 +242,9 @@ export default function IndexPage() {
       {/* Contact Section */}
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
         <div className="inline-block max-w-lg justify-center text-center">
-          <h2 className="mb-4 text-3xl font-bold">Let's Connect</h2>
+          <h2 className="mb-4 text-3xl font-bold">Lets Connect</h2>
           <p className="mb-6 text-gray-600">
-            I'm always open to discussing new projects and opportunities.
+            Im always open to discussing new projects and opportunities.
           </p>
         </div>
 
