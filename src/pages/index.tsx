@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import { Link } from "@heroui/link";
+import { button as buttonStyles } from "@heroui/theme";
+
+import { siteConfig } from "@/config/site";
+import { GithubIcon } from "@/components/icons";
+import DefaultLayout from "@/layouts/default";
 
 const TECH_STACK = [
-  { name: 'JavaScript', icon: '🟨' },
-  { name: 'React', icon: '⚛️' },
-  { name: 'Node.js', icon: '🟢' },
-  { name: 'Go', icon: '🔵' },
-  { name: 'PostgreSQL', icon: '🐘' },
-  { name: 'Docker', icon: '🐳' },
-  { name: 'Git', icon: '📦' },
-  { name: 'Python', icon: '🐍' }
+  { name: "JavaScript", icon: "" },
+  { name: "React", icon: "" },
+  { name: "Node.js", icon: "" },
+  { name: "Go", icon: "" },
+  { name: "PostgreSQL", icon: "" },
+  { name: "Docker", icon: "" },
+  { name: "Git", icon: "" },
+  { name: "Python", icon: "" },
 ];
 
 const WORK_EXPERIENCES = [
@@ -21,9 +26,18 @@ const WORK_EXPERIENCES = [
     responsibilities: [
       "Developed Prospera - E-Wallet Web App with JWT authentication, Redis caching, and interactive charts",
       "Built Tickitz - Movie Booking platform with Golang backend, React frontend, and CI/CD automation",
-      "Implemented protected routes, RESTful APIs, and deployed with Docker Compose"
+      "Implemented protected routes, RESTful APIs, and deployed with Docker Compose",
     ],
-    techUsed: ["JavaScript", "Go", "React", "Redux", "Gin", "PostgreSQL", "Docker", "Redis"]
+    techUsed: [
+      "JavaScript",
+      "Go",
+      "React",
+      "Redux",
+      "Gin",
+      "PostgreSQL",
+      "Docker",
+      "Redis",
+    ],
   },
   {
     title: "Fullstack Developer Talent",
@@ -34,263 +48,246 @@ const WORK_EXPERIENCES = [
     responsibilities: [
       "Developed personal website with built-in CMS for managing portfolios dynamically",
       "Designed responsive UI using HTML, CSS, and Tailwind CSS",
-      "Implemented server-side rendering with Handlebars.js and Express.js"
+      "Implemented server-side rendering with Handlebars.js and Express.js",
     ],
-    techUsed: ["JavaScript", "Express.js", "PostgreSQL", "Handlebars", "Tailwind CSS"]
-  }
+    techUsed: [
+      "JavaScript",
+      "Express.js",
+      "PostgreSQL",
+      "Handlebars",
+      "Tailwind CSS",
+    ],
+  },
 ];
 
 const PROJECTS = [
   {
     name: "Prospera - E-Wallet App",
-    description: "Digital wallet web application with fund transfers, transaction history, and financial insights dashboard",
+    description:
+      "Digital wallet web application with fund transfers, transaction history, and financial insights dashboard",
     tech: ["React", "PostgreSQL", "Redis", "JWT", "Recharts"],
-    period: "Sep - Oct 2025"
+    period: "Sep - Oct 2025",
   },
   {
     name: "Tickitz - Movie Booking",
-    description: "Full-featured movie ticket booking platform with seat selection and real-time transactions",
+    description:
+      "Full-featured movie ticket booking platform with seat selection and real-time transactions",
     tech: ["React", "Go", "PostgreSQL", "Docker", "CI/CD"],
-    period: "Jun - Sep 2025"
-  }
+    period: "Jun - Sep 2025",
+  },
 ];
 
-export default function Portfolio() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+const EDUCATION = [
+  {
+    degree: "Computer Engineering",
+    school: "Brawijaya University",
+    level: "Bachelor Degree",
+    period: "2022 - 2024",
+    gpa: "3.85/4.00",
+    description:
+      "Focused on computer networking, database systems, AI/ML, and embedded systems. Thesis: ESP32-based squat form detector using Random Forest algorithm.",
+  },
+  {
+    degree: "Electronics Engineering",
+    school: "Electronic Engineering Polytechnic Institute of Surabaya",
+    level: "Associate Degree",
+    period: "2017 - 2022",
+    gpa: "3.34/4.00",
+    description:
+      "Foundation in electrical engineering, embedded systems, and IoT. Final Project: Automated conveyor belt with Computer Vision for tomato sorting.",
+  },
+];
 
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setMobileMenuOpen(false);
-    }
-  };
-
+export default function IndexPage() {
   return (
-    
-    <div className="min-h-screen bg-white text-gray-900">
-      {/* Navbar */}
-      <nav className="sticky top-0 bg-white border-b border-gray-200 z-50">
-        <div className="max-w-6xl mx-auto px-6 py-4">
-          <div className="flex justify-between items-center">
-            <div className="text-xl font-bold">Radif</div>
-            
-            {/* Desktop Menu */}
-            <div className="hidden md:flex gap-8">
-              <button onClick={() => scrollToSection('home')} className="hover:text-green-600 transition-colors">
-                Home
-              </button>
-              <button onClick={() => scrollToSection('tech-stack')} className="hover:text-green-600 transition-colors">
-                Tech Stack
-              </button>
-              <button onClick={() => scrollToSection('experience')} className="hover:text-green-600 transition-colors">
-                Experience
-              </button>
-              <button onClick={() => scrollToSection('projects')} className="hover:text-green-600 transition-colors">
-                Projects
-              </button>
-              <button onClick={() => scrollToSection('education')} className="hover:text-green-600 transition-colors">
-                Education
-              </button>
-              <button onClick={() => scrollToSection('contact')} className="hover:text-green-600 transition-colors">
-                Contact
-              </button>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button 
-              className="md:hidden"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {mobileMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
-          </div>
-
-          {/* Mobile Menu */}
-          {mobileMenuOpen && (
-            <div className="md:hidden mt-4 pb-4 flex flex-col gap-4">
-              <button onClick={() => scrollToSection('home')} className="text-left hover:text-green-600">
-                Home
-              </button>
-              <button onClick={() => scrollToSection('tech-stack')} className="text-left hover:text-green-600">
-                Tech Stack
-              </button>
-              <button onClick={() => scrollToSection('experience')} className="text-left hover:text-green-600">
-                Experience
-              </button>
-              <button onClick={() => scrollToSection('projects')} className="text-left hover:text-green-600">
-                Projects
-              </button>
-              <button onClick={() => scrollToSection('education')} className="text-left hover:text-green-600">
-                Education
-              </button>
-              <button onClick={() => scrollToSection('contact')} className="text-left hover:text-green-600">
-                Contact
-              </button>
-            </div>
-          )}
+    <DefaultLayout>
+      {/* Hero Section */}
+      <section className="flex flex-col items-center justify-center gap-4 py-8 md:flex-row md:gap-12 md:py-10">
+        <div className="w-56 md:w-64">
+          <img alt="Radif" className="rounded-xl" src="/profile-pic.jpg" />
         </div>
-      </nav>
+        <div className="flex flex-col items-center gap-4 md:items-start">
+          <div className="text-3xl font-bold md:text-6xl">Hi, I'm Radif 👋</div>
+          <p className="text-xl font-medium text-gray-600">
+            Fullstack Developer & AI/ML Enthusiast
+          </p>
+          <p className="text-center md:text-left">
+            Passionate about building secure, responsive, and scalable
+            applications, while also exploring the intersection of AI, IoT, and
+            real-world automation. With a background in Electrical and Computer
+            Engineering, I bring a multidisciplinary perspective to software
+            development.
+          </p>
 
-      <div className="max-w-4xl mx-auto px-6 py-12">
-        
-        {/* Hero Section */}
-        <section id="home" className="mb-16 scroll-mt-20">
-          <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
-            <div className="w-48 h-48 rounded-full overflow-hidden flex-shrink-0">
-              <img 
-                src="/profile-pic.jpg" 
-                alt="Radif" 
-                className="w-full h-full object-cover"
+          <div className="flex gap-3">
+            <svg
+              className="size-6"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
+              <path
+                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <div>Surabaya, Indonesia</div>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="inline-block h-2 w-2 rounded-full bg-green-500" />
+            <span className="text-gray-500">Available for new projects</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Tech Stack */}
+      <section className="flex flex-col items-start justify-start gap-4 py-8 md:gap-12 md:py-10">
+        <h2 className="text-2xl font-bold">Tech Stack</h2>
+        <div className="flex w-full flex-wrap gap-3">
+          {TECH_STACK.map((tech) => (
+            <div
+              key={tech.name}
+              className="flex items-center gap-2 rounded-full bg-gray-100 px-4 py-2 text-sm font-medium"
+            >
+              <span>{tech.icon}</span>
+              <span>{tech.name}</span>
             </div>
-            <div className="flex-1 text-center md:text-left">
-              <h1 className="text-4xl md:text-5xl font-bold mb-3">Hi, I'm Radif 👋</h1>
-              <p className="text-xl text-gray-600 mb-4 font-medium">
-                Fullstack Developer & AI/ML Enthusiast
-              </p>
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                Passionate about building secure, responsive, and scalable applications, while also exploring 
-                the intersection of AI, IoT, and real-world automation. With a background in Electrical and 
-                Computer Engineering, I bring a multidisciplinary perspective to software development.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 items-center md:items-start justify-center md:justify-start">
-                <div className="flex items-center gap-2 text-gray-600">
-                  <span>📍</span>
-                  <span>Surabaya, Indonesia</span>
-                </div>
-                <div className="flex items-center gap-2 text-green-600">
-                  <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                  <span>Available for projects</span>
-                </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Work Experiences */}
+      <section className="flex flex-col items-start justify-start gap-4 py-8 md:gap-12 md:py-10">
+        <h2 className="text-2xl font-bold">Work Experience</h2>
+        <div className="flex w-full flex-col gap-8">
+          {WORK_EXPERIENCES.map((exp, index) => (
+            <div key={index} className="flex flex-col gap-2">
+              <div className="w-14">
+                <img className="rounded" src={exp.img} alt={exp.company} />
               </div>
-              <div className="flex gap-4 mt-6 justify-center md:justify-start">
-                <a href="https://github.com/radifaghnadiin" target="_blank" rel="noopener noreferrer" 
-                   className="text-gray-700 hover:text-gray-900">GitHub</a>
-                <a href="https://linkedin.com/in/radifaghnadiin" target="_blank" rel="noopener noreferrer"
-                   className="text-gray-700 hover:text-gray-900">LinkedIn</a>
-                <a href="mailto:radif.aghnadiin@gmail.com" 
-                   className="text-gray-700 hover:text-gray-900">Email</a>
+              <div className="text-xl font-bold">{exp.title}</div>
+              <div className="text-green-600">{exp.company}</div>
+              <div className="text-gray-500 dark:text-gray-400">
+                {exp.startAt} - {exp.endAt}
+              </div>
+              <ul className="list-inside list-disc text-gray-600">
+                {exp.responsibilities.map((resp, idx) => (
+                  <li key={idx}>{resp}</li>
+                ))}
+              </ul>
+              <ul className="mt-2 flex flex-wrap gap-2 text-xs font-medium text-gray-700">
+                {exp.techUsed.map((tech) => (
+                  <li key={tech} className="rounded-full bg-gray-200 px-3 py-1">
+                    {tech}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Featured Projects */}
+      <section className="flex flex-col items-start justify-start gap-4 py-8 md:gap-12 md:py-10">
+        <h2 className="text-2xl font-bold">Featured Projects</h2>
+        <div className="grid w-full gap-6 md:grid-cols-2">
+          {PROJECTS.map((project, index) => (
+            <div
+              key={index}
+              className="rounded-lg border border-gray-200 p-6 transition-colors hover:border-gray-400"
+            >
+              <h3 className="mb-2 text-xl font-bold">{project.name}</h3>
+              <p className="mb-3 text-sm text-gray-600">{project.period}</p>
+              <p className="mb-4 text-gray-700">{project.description}</p>
+              <div className="flex flex-wrap gap-2">
+                {project.tech.map((tech) => (
+                  <span
+                    key={tech}
+                    className="rounded-full bg-gray-100 px-3 py-1 text-xs"
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
             </div>
-          </div>
-        </section>
+          ))}
+        </div>
+      </section>
 
-        {/* Tech Stack */}
-        <section id="tech-stack" className="mb-16 scroll-mt-20">
-          <h2 className="text-2xl font-bold mb-6">Tech Stack</h2>
-          <div className="flex flex-wrap gap-3">
-            {TECH_STACK.map((tech) => (
-              <div key={tech.name} 
-                   className="px-4 py-2 bg-gray-100 rounded-full text-sm font-medium flex items-center gap-2">
-                <span>{tech.icon}</span>
-                <span>{tech.name}</span>
+      {/* Education */}
+      <section className="flex flex-col items-start justify-start gap-4 py-8 md:gap-12 md:py-10">
+        <h2 className="text-2xl font-bold">Education</h2>
+        <div className="flex w-full flex-col gap-6">
+          {EDUCATION.map((edu, index) => (
+            <div key={index} className="flex flex-col gap-2">
+              <div className="text-xl font-bold">{edu.degree}</div>
+              <div className="text-green-600">{edu.school}</div>
+              <div className="text-gray-500 dark:text-gray-400">
+                {edu.level} • {edu.period} • GPA: {edu.gpa}
               </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Work Experience */}
-        <section id="experience" className="mb-16 scroll-mt-20">
-          <h2 className="text-2xl font-bold mb-6">Work Experience</h2>
-          <div className="space-y-8">
-            {WORK_EXPERIENCES.map((exp, index) => (
-              <div key={index} className="border-l-2 border-gray-200 pl-6">
-                <div className="flex items-start gap-4 mb-3">
-                  <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0 text-2xl">
-                    💼
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold">{exp.title}</h3>
-                    <p className="text-green-600 font-medium">{exp.company}</p>
-                    <p className="text-gray-500 text-sm">{exp.startAt} - {exp.endAt}</p>
-                  </div>
-                </div>
-                <ul className="space-y-2 mb-4 text-gray-700">
-                  {exp.responsibilities.map((resp, idx) => (
-                    <li key={idx} className="flex gap-2">
-                      <span className="text-gray-400 mt-1">•</span>
-                      <span>{resp}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex flex-wrap gap-2">
-                  {exp.techUsed.map((tech) => (
-                    <span key={tech} className="px-3 py-1 bg-gray-100 rounded-full text-xs">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Featured Projects */}
-        <section id="projects" className="mb-16 scroll-mt-20">
-          <h2 className="text-2xl font-bold mb-6">Featured Projects</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {PROJECTS.map((project, index) => (
-              <div key={index} className="border border-gray-200 rounded-lg p-6 hover:border-gray-400 transition-colors">
-                <h3 className="text-xl font-bold mb-2">{project.name}</h3>
-                <p className="text-gray-600 mb-3 text-sm">{project.period}</p>
-                <p className="text-gray-700 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech) => (
-                    <span key={tech} className="px-2 py-1 bg-gray-100 rounded text-xs">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Education */}
-        <section id="education" className="mb-16 scroll-mt-20">
-          <h2 className="text-2xl font-bold mb-6">Education</h2>
-          <div className="space-y-6">
-            <div className="border-l-2 border-gray-200 pl-6">
-              <h3 className="text-xl font-bold">Computer Engineering</h3>
-              <p className="text-green-600 font-medium">Brawijaya University</p>
-              <p className="text-gray-500 text-sm mb-2">Bachelor Degree • 2022 - 2024 • GPA: 3.85/4.00</p>
-              <p className="text-gray-700">
-                Focused on computer networking, database systems, AI/ML, and embedded systems. 
-                Thesis: ESP32-based squat form detector using Random Forest algorithm.
-              </p>
+              <p className="text-gray-600">{edu.description}</p>
             </div>
-            <div className="border-l-2 border-gray-200 pl-6">
-              <h3 className="text-xl font-bold">Electronics Engineering</h3>
-              <p className="text-green-600 font-medium">EEPIS Surabaya</p>
-              <p className="text-gray-500 text-sm mb-2">Associate Degree • 2017 - 2022 • GPA: 3.34/4.00</p>
-              <p className="text-gray-700">
-                Foundation in electrical engineering, embedded systems, and IoT. 
-                Final Project: Automated conveyor belt with Computer Vision for tomato sorting.
-              </p>
-            </div>
-          </div>
-        </section>
+          ))}
+        </div>
+      </section>
 
-        {/* Contact */}
-        <section id="contact" className="text-center py-8 border-t border-gray-200 scroll-mt-20">
-          <h2 className="text-2xl font-bold mb-4">Let's Connect</h2>
-          <p className="text-gray-600 mb-6">
+      {/* Contact Section */}
+      <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+        <div className="inline-block max-w-lg justify-center text-center">
+          <h2 className="mb-4 text-3xl font-bold">Let's Connect</h2>
+          <p className="mb-6 text-gray-600">
             I'm always open to discussing new projects and opportunities.
           </p>
-          <a href="mailto:radif.aghnadiin@gmail.com" 
-             className="inline-block px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors">
-            Get in Touch
-          </a>
-        </section>
+        </div>
 
-      </div>
-    </div>
+        <div className="flex gap-3">
+          <Link
+            isExternal
+            className={buttonStyles({ variant: "bordered", radius: "full" })}
+            href={siteConfig.links.github}
+          >
+            <GithubIcon size={20} />
+            GitHub
+          </Link>
+          <Link
+            isExternal
+            className={buttonStyles({ variant: "bordered", radius: "full" })}
+            href="https://linkedin.com/in/radifaghnadiin"
+          >
+            <svg className="size-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+            LinkedIn
+          </Link>
+          <Link
+            className={buttonStyles({ variant: "bordered", radius: "full" })}
+            href="mailto:radif.aghnadiin@gmail.com"
+          >
+            <svg
+              className="size-5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              />
+            </svg>
+            Email
+          </Link>
+        </div>
+      </section>
+    </DefaultLayout>
   );
 }
