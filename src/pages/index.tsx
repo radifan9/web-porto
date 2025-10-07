@@ -14,6 +14,12 @@ const TECH_STACK = [
   { name: "Docker", icon: "" },
   { name: "Git", icon: "" },
   { name: "Python", icon: "" },
+  { name: "C", icon: "" },
+  { name: "C++", icon: "" },
+  { name: "ExpressJS", icon: "" },
+  { name: "React Router", icon: "" },
+  { name: "Redux", icon: "" },
+  { name: "Tailwind", icon: "" },
 ];
 
 const WORK_EXPERIENCES = [
@@ -63,6 +69,7 @@ const WORK_EXPERIENCES = [
 const PROJECTS = [
   {
     name: "Prospera - E-Wallet App",
+    img: "/prospera-1.png",
     description:
       "Digital wallet web application with fund transfers, transaction history, and financial insights dashboard",
     tech: ["React", "PostgreSQL", "Redis", "JWT", "Recharts"],
@@ -70,6 +77,7 @@ const PROJECTS = [
   },
   {
     name: "Tickitz - Movie Booking",
+    img: "/tickitz-1.png",
     description:
       "Full-featured movie ticket booking platform with seat selection and real-time transactions",
     tech: ["React", "Go", "PostgreSQL", "Docker", "CI/CD"],
@@ -103,12 +111,12 @@ export default function IndexPage() {
     <DefaultLayout>
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:flex-row md:gap-12 md:py-10">
-        <div className="w-56 md:w-64">
+        <div className="w-64 md:w-130">
           <img alt="Radif" className="rounded-xl" src="/profile-pic.jpg" />
         </div>
         <div className="flex flex-col items-center gap-4 md:items-start">
           <div className="text-3xl font-bold md:text-6xl">Hi, Im Radif 👋</div>
-          <p className="text-xl font-medium text-gray-600">
+          <p className="text-xl font-medium text-gray-600 dark:text-gray-100">
             Fullstack Developer & AI/ML Enthusiast
           </p>
           <p className="text-center md:text-left">
@@ -143,7 +151,9 @@ export default function IndexPage() {
           </div>
           <div className="flex items-center gap-2">
             <span className="inline-block h-2 w-2 rounded-full bg-green-500" />
-            <span className="text-gray-500">Available for new projects</span>
+            <span className="text-gray-500 dark:text-gray-100">
+              Available for new projects
+            </span>
           </div>
         </div>
       </section>
@@ -157,7 +167,7 @@ export default function IndexPage() {
               key={tech.name}
               className="flex items-center gap-2 rounded-full bg-gray-100 px-4 py-2 text-sm font-medium"
             >
-              <span>{tech.icon}</span>
+              {/* <span>{tech.icon}</span> */}
               <span className="dark:text-gray-600">{tech.name}</span>
             </div>
           ))}
@@ -171,14 +181,14 @@ export default function IndexPage() {
           {WORK_EXPERIENCES.map((exp, index) => (
             <div key={index} className="flex flex-col gap-2">
               <div className="w-14">
-                <img className="rounded" src={exp.img} alt={exp.company} />
+                <img alt={exp.company} className="rounded" src={exp.img} />
               </div>
               <div className="text-xl font-bold">{exp.title}</div>
               <div className="text-green-600">{exp.company}</div>
               <div className="text-gray-500 dark:text-gray-400">
                 {exp.startAt} - {exp.endAt}
               </div>
-              <ul className="list-inside list-disc text-gray-600">
+              <ul className="list-inside list-disc text-gray-600 dark:text-gray-100">
                 {exp.responsibilities.map((resp, idx) => (
                   <li key={idx}>{resp}</li>
                 ))}
@@ -204,9 +214,16 @@ export default function IndexPage() {
               key={index}
               className="rounded-lg border border-gray-200 p-6 transition-colors hover:border-gray-400"
             >
+              <div>
+                <img alt={project.name} src={project.img} />
+              </div>
               <h3 className="mb-2 text-xl font-bold">{project.name}</h3>
-              <p className="mb-3 text-sm text-gray-600 dark:text-gray-100">{project.period}</p>
-              <p className="mb-4 text-gray-700 dark:text-gray-100">{project.description}</p>
+              <p className="mb-3 text-sm text-gray-600 dark:text-gray-100">
+                {project.period}
+              </p>
+              <p className="mb-4 text-gray-700 dark:text-gray-100">
+                {project.description}
+              </p>
               <div className="flex flex-wrap gap-2">
                 {project.tech.map((tech) => (
                   <span
@@ -233,7 +250,9 @@ export default function IndexPage() {
               <div className="text-gray-500 dark:text-gray-400">
                 {edu.level} • {edu.period} • GPA: {edu.gpa}
               </div>
-              <p className="text-gray-600 dark:text-gray-100">{edu.description}</p>
+              <p className="text-gray-600 dark:text-gray-100">
+                {edu.description}
+              </p>
             </div>
           ))}
         </div>
@@ -279,9 +298,9 @@ export default function IndexPage() {
               viewBox="0 0 24 24"
             >
               <path
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
               />
             </svg>
             Email
