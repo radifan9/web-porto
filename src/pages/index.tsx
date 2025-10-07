@@ -158,7 +158,7 @@ export default function IndexPage() {
               className="flex items-center gap-2 rounded-full bg-gray-100 px-4 py-2 text-sm font-medium"
             >
               <span>{tech.icon}</span>
-              <span>{tech.name}</span>
+              <span className="dark:text-gray-600">{tech.name}</span>
             </div>
           ))}
         </div>
@@ -205,13 +205,13 @@ export default function IndexPage() {
               className="rounded-lg border border-gray-200 p-6 transition-colors hover:border-gray-400"
             >
               <h3 className="mb-2 text-xl font-bold">{project.name}</h3>
-              <p className="mb-3 text-sm text-gray-600">{project.period}</p>
-              <p className="mb-4 text-gray-700">{project.description}</p>
+              <p className="mb-3 text-sm text-gray-600 dark:text-gray-100">{project.period}</p>
+              <p className="mb-4 text-gray-700 dark:text-gray-100">{project.description}</p>
               <div className="flex flex-wrap gap-2">
                 {project.tech.map((tech) => (
                   <span
                     key={tech}
-                    className="rounded-full bg-gray-100 px-3 py-1 text-xs"
+                    className="rounded-full bg-gray-100 px-3 py-1 text-xs dark:text-gray-600"
                   >
                     {tech}
                   </span>
@@ -233,7 +233,7 @@ export default function IndexPage() {
               <div className="text-gray-500 dark:text-gray-400">
                 {edu.level} • {edu.period} • GPA: {edu.gpa}
               </div>
-              <p className="text-gray-600">{edu.description}</p>
+              <p className="text-gray-600 dark:text-gray-100">{edu.description}</p>
             </div>
           ))}
         </div>
